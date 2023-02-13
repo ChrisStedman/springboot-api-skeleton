@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: Demo API
+  version: '1.0'
+  description: Demo Spec
+paths:
+  /example:
+    get:
+      summary: Get example
+      tags:
+        - Example
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Status:
+                    $ref: '#/components/schemas/Status'
+        '400':
+          $ref: '#/components/responses/400'
+      operationId: get-example
+components:
+  schemas:
+    Status:
+      title: Status
+      type: string
+  responses:
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              MessageHeader:
+                $ref: '#/components/schemas/Status'
