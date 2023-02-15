@@ -50,7 +50,7 @@ dependencies {
 
 openApiGenerate {
 	generatorName = "spring"
-	inputSpec = "$projectDir/apis.yaml".toString()
+	inputSpec = "$projectDir/src/main/resources/apis.yaml".toString()
 	outputDir = "$buildDir/generated".toString()
 	apiPackage = "com.example.springapiskeleton.api"
 	modelPackage = "com.example.springapiskeleton.api.model"
