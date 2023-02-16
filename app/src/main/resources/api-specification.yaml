@@ -16,14 +16,35 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  Status:
-                    $ref: '#/components/schemas/Status'
+                type: array
+                items:
+                    $ref: '#/components/schemas/Example'
         '400':
           $ref: '#/components/responses/400'
 components:
   schemas:
+    Example:
+      description: Example object
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12345
+        fullName:
+          type: string
+          example: 'John Doe'
+        age:
+          type: integer
+          format: int4
+          example: 33
+        createdAt:
+          type: string
+          format: date-time
+          description: The date-time the record was created
+          example: '2023-02-17 09:33:14'
+      required:
+        - fullName
     Status:
       title: Status
       type: string
