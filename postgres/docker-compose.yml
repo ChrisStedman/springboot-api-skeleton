@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres_example
+    restart: always
+    environment:
+      - POSTGRES_DB=example_table
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    build: './db'
+    ports:
+      - '5438:5432'
