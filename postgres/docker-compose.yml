@@ -4,7 +4,7 @@ services:
     container_name: postgres_example
     restart: always
     environment:
-      - POSTGRES_DB=example_table
+      - POSTGRES_DB=example_database
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     build: './db'
