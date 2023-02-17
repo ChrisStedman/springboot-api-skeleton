@@ -1,16 +1,11 @@
 # Spring-API-Skeleton
 
-## Database Set Up
-### Running Database  
-  - Open Docker Desktop
-  - Using the terminal, navigate into the `postgres` directory
-  - Execute `docker-compose up -d --build`
-  - This will run Postgres database server in a docker container
+A generic Spring-boot skeleton which provides all the necessary dependencies and configurations to create a simple Spring based API.
 
-### Stopping Database
-  - Using the terminal, navigate into the `postgres` directory
-  - Execute `docker-compose down -v`
-
-### Modifying Database
-  - Change the database name by modifying `POSTGRES_DB` in `docker-compose.yml
-  - Create your own schemas, tables and values by adding SQL queries to `init.sql`
+### Includes:
+  
+| Functionality                               | Dependency                             |
+| -------------                               | -------------                          |
+| Generate code from specifications           | OpenApi Generator                      |
+| Postgres connectivity                       | Docker</br>Postgres</br>JPA</br>       |
+| Generate boilerplate code                   | Lombok                                 |
