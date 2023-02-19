@@ -32,7 +32,10 @@ jobs:
         distribution: 'corretto'
      
     - name: Start container for Postgres DB
-      run: docker-compose up -d --build
+      run: |
+       cd postgres
+       docker-compose up -d --build
+       cd ..
         
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
@@ -40,4 +43,7 @@ jobs:
         arguments: build
         
     - name: Stop container for Postgres DB
-      run: docker-compose down -v
+      run: |
+       cd postgres
+       docker-compose down -v
+       cd ..
