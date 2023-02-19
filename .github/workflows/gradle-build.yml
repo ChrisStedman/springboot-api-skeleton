@@ -43,6 +43,7 @@ jobs:
         arguments: build
         
     - name: Stop container for Postgres DB
+      if: always()
       run: |
        cd postgres
        docker-compose down -v
