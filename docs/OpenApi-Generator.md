@@ -95,6 +95,8 @@ Models, controllers and delegate classes will be generated from this specificati
 
 Path: [app/build/generated/src/main/java/com/example/springapiskeleton/api](../app/build/generated/src/main/java/com/example/springapiskeleton/api)
 
+_Note: Link will only work after application has been built and files have been generated_
+
 ### Creating custom API logic
 
 The generated `ExampleApiDelegate` class defines a default `NOT_IMPLEMENTED` response for the endpoint. To define custom logic a new delegate must be created which implements this interface and overrides the method for the endpoint `getExample()`.
