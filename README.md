@@ -53,8 +53,6 @@ Depending on your local setup, some of these values may already be configfured c
 3. Select the configuration and click play.
 4. The application will start, and you will be able to hit the API using Postman
 
-
-
 ## Postgres Database
 ### Starting container
 - Open Docker Desktop
@@ -69,3 +67,6 @@ Depending on your local setup, some of these values may already be configfured c
 ### Modifying Database
 - Change the database name by modifying `POSTGRES_DB` in `docker-compose.yml
 - Create your own schemas, tables and values by adding SQL queries to `init.sql`
+
+## Guides
+[OpenApi Generator](./docs/OpenApi-Generator.md)
