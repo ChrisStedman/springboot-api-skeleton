@@ -37,6 +37,10 @@ dependencies {
 	compileOnly("org.openapitools:openapi-generator-gradle-plugin:6.2.0") {
 		exclude group: 'org.slf4j'
 	}
+
+	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
 	implementation('com.fasterxml.jackson.core:jackson-annotations:2.14.1')
 	implementation('com.fasterxml.jackson.core:jackson-core:2.14.1')
 	implementation('com.fasterxml.jackson.core:jackson-databind:2.14.1')
@@ -55,15 +59,10 @@ openApiGenerate {
 	apiPackage = "com.example.springapiskeleton.api"
 	modelPackage = "com.example.springapiskeleton.api.model"
 	configOptions = [
-			java8           : "true",
-			dateLibrary     : "java8",
 			delegatePattern : "true",
-			useTags         : "true",
 			generateApiTests: "false",
 			useBeanValidation   : "true",
-			generateSupportingFiles: "false",
 			useSpringBoot3: "true"
-
 	]
 }
 
