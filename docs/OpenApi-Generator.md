@@ -81,7 +81,7 @@ components:
             $ref: '#/components/schemas/Status'
 ```
 
-## App Example
+## App example
 
 ### Specification
 A simple specification is included in the application which defines a `GET /example` endpoint.
@@ -104,3 +104,10 @@ The generated `ExampleApiDelegate` class defines a default `NOT_IMPLEMENTED` res
 An example delegate implementation which returns a hard-coded success status has been created.
 
 Path: [app/src/main/java/com/example/springapiskeleton/delegate](../app/src/main/java/com/example/springapiskeleton/delegate)
+
+
+## Additional resources
+[Swagger - Basic Structure](https://swagger.io/docs/specification/basic-structure/)  
+[Smartbear - OpenAPI 3.0 Tutorial](https://support.smartbear.com/swaggerhub/docs/tutorials/openapi-3-tutorial.html)  
+[Swagger - OpenAPI Specification](https://swagger.io/specification/)  
+[OpenAPI Specification Github](https://github.com/OAI/OpenAPI-Specification)
