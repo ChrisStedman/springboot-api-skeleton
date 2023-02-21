@@ -54,7 +54,7 @@ dependencies {
 
 openApiGenerate {
 	generatorName = "spring"
-	inputSpec = "$projectDir/src/main/resources/apis.yaml".toString()
+	inputSpec = "$projectDir/src/main/resources/api-specification.yaml".toString()
 	outputDir = "$buildDir/generated".toString()
 	apiPackage = "com.example.springapiskeleton.api"
 	modelPackage = "com.example.springapiskeleton.api.model"
@@ -62,7 +62,9 @@ openApiGenerate {
 			delegatePattern : "true",
 			generateApiTests: "false",
 			useBeanValidation   : "true",
+			useTags: "true",
 			useSpringBoot3: "true"
+
 	]
 }
 
