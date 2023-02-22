@@ -8,11 +8,11 @@ Project can be run from a main branch very basic example, you can switch to an e
 
 ### Includes:
   
-| Functionality                               | Dependency                             |
-| -------------                               | -------------                          |
-| Generate code from specifications           | OpenApi Generator                      |
-| Postgres connectivity                       | Docker</br>Postgres</br>JPA</br>       |
-| Generate boilerplate code                   | Lombok                                 |
+| Functionality                     | Dependency                       |
+|-----------------------------------|----------------------------------|
+| Generate code from specifications | OpenApi Generator                |
+| Postgres connectivity             | Docker</br>Postgres</br>JPA</br> |
+| Generate boilerplate code         | Lombok                           |
 
 
 ## Project Setup
@@ -69,4 +69,5 @@ Depending on your local setup, some of these values may already be configfured c
 - Create your own schemas, tables and values by adding SQL queries to `init.sql`
 
 ## Guides
-[OpenApi Generator](./docs/OpenApi-Generator.md)
+[OpenApi Generator](docs/OpenApi-Generator.md)  
+[Postman](docs/Postman.md)  
