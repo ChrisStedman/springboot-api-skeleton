@@ -1,6 +1,6 @@
 # Spring-API-Skeleton
 
-## Overview
+## 📜 Overview
 
 A skeleton of a Spring-boot REST API skeleton which can be used to teach the basics of API development, or a starting point of a  new project. 
 
@@ -14,23 +14,7 @@ Examples which increase in complexity/functionality have been included to illust
 | Postgres connectivity             | Docker</br>Postgres</br>JPA  |
 | Generate boilerplate code         | Lombok                       |
 
-## Table of Contents
-
- - [Overview](#overview)
- - [Project Setup](#project-setup)
- - [Running Project](#running-project)
-   - [Without Postgres DB](#without-postgres-db)
-   - [With Postgres DB](#with-postgres-db)
- - [Postgres Database](#postgres-database)
-   - [Starting Container](#starting-container)
-   - [Stopping Container](#stopping-container)
-   - [Modifying Database](#modifying-database)
- - [Guide](#guides)
-   - [OpenApi Generator](#openapi-generator)
-   - [Postman](#postman)
-
-
-## Project Setup
+## 🔨 Project Setup
 Depending on your local setup, some of these values may already be configfured correct.
 
 ### Link Gradle project
@@ -57,7 +41,7 @@ Depending on your local setup, some of these values may already be configfured c
       1. This should be `corretto-17`
 
 
-## Running Project
+## 🏃 Running Project
 ### Without Postgres DB
 1. When the project is configured correctly, a Spring run configuration should be automatically added.
    1. If not, then double-check the `Project Setup` section again
@@ -71,7 +55,7 @@ Depending on your local setup, some of these values may already be configfured c
 3. Select the configuration and click play.
 4. The application will start, and you will be able to hit the API using Postman
 
-## Usage
+## 🎯 Usage
 ### Hitting an endpoint
 Once the application is running, the defined endpoints can be called. The `main` branch contains an example endpoint `GET /example`, as well as a health endpoint `GET /health`. 
 The definition of the `/example` endpoint can be found in the specification file `api-specifications.yaml`. See the [OpenApi Generator](#openapi-generator) guide for more information.  
@@ -99,9 +83,7 @@ Create a new postman request to hit the newly created endpoint. See the [Postman
 
 Run the application and hit the new endpoint using Postman.
 
-
-
-## Postgres Database
+## 🗄️ Postgres Database
 ### Starting container
 - Open Docker Desktop
 - Using the terminal, navigate into the `postgres` directory
@@ -116,6 +98,6 @@ Run the application and hit the new endpoint using Postman.
 - Change the database name by modifying `POSTGRES_DB` in `docker-compose.yml
 - Create your own schemas, tables and values by adding SQL queries to `init.sql`
 
-## Guides
+## 👌 Guides
 #### [OpenApi Generator](docs/OpenApi-Generator.md)
 #### [Postman](docs/Postman.md)  
