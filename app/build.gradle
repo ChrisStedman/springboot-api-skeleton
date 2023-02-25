@@ -61,10 +61,9 @@ openApiGenerate {
 	configOptions = [
 			delegatePattern : "true",
 			generateApiTests: "false",
-			useBeanValidation   : "true",
+			useBeanValidation: "true",
 			useTags: "true",
 			useSpringBoot3: "true"
-
 	]
 }
 
