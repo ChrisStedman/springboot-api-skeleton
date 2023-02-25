@@ -30,12 +30,7 @@ paths:
       tags:
         - Artist
       requestBody:
-        description: Artist request body
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Artist'
+        $ref: '#/components/requestBodies/ArtistRequestBody'
       responses:
         '201':
           description: Created
@@ -43,6 +38,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Artist'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /album:
+    post:
+      summary: Create album
+      operationId: create-album
+      tags:
+        - Album
+      requestBody:
+        $ref: '#/components/requestBodies/AlbumRequestBody'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
         '400':
           $ref: '#/components/responses/BadRequest'
   /album/{albumId}:
@@ -72,15 +84,26 @@ components:
       schema:
         type: string
         example: '12345'
+  requestBodies:
+    ArtistRequestBody:
+      description: Artist request body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ArtistBase'
+    AlbumRequestBody:
+      description: Album request body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AlbumBase'
   schemas:
-    Album:
+    AlbumBase:
       description: Album
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 12345
         name:
           type: string
           example: 'Nevermind'
@@ -91,28 +114,59 @@ components:
           format: date
           description: The date the album was released
           example: '2021-06-23'
+        artistId:
+          type: integer
+          format: int64
+          description: Must be a valid artistId
+          example: 12345
       required:
         - name
         - genre
-    Artist:
-      description: Artist
+        - artistId
+    Album:
+      description: Album with all details
       type: object
       properties:
         id:
           type: integer
           format: int64
           example: 12345
+      allOf:
+        - $ref: '#/components/schemas/AlbumBase'
+      required:
+        - id
+        - name
+        - genre
+        - artistId
+    ArtistBase:
+      description: Base artist
+      type: object
+      properties:
         name:
           type: string
           example: Nirvana
         genre:
           $ref: '#/components/schemas/Genre'
+      required:
+        - name
+        - genre
+    Artist:
+      description: Artist with all details
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 12345
         albums:
           type: array
           minItems: 0
           items:
             $ref: '#/components/schemas/Album'
+      allOf:
+        - $ref: '#/components/schemas/ArtistBase'
       required:
+        - id
         - name
         - genre
         - albums
