@@ -1,5 +1,6 @@
 package com.example.springapiskeleton.dao;
 
+import com.example.springapiskeleton.api.model.Album;
 import com.example.springapiskeleton.api.model.Artist;
 import com.example.springapiskeleton.api.model.ArtistBase;
 import com.example.springapiskeleton.api.model.Genre;
@@ -7,6 +8,8 @@ import com.google.common.collect.Lists;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class ArtistDao {
 
@@ -31,15 +34,33 @@ public class ArtistDao {
                 .id(id)
                 .name(name)
                 .genre(genre)
-                .albums(List.of());
+                .albums(Lists.newArrayList());
+    }
+
+    public static Optional<Artist> getArtistById(Long id){
+        return getArtistList().stream()
+                .filter(artist -> id.equals(artist.getId()))
+                .findFirst();
     }
 
     public static Artist createArtist(ArtistBase artistBase){
         Artist artist = buildArtist(id++, artistBase.getName(), artistBase.getGenre());
 
-        artistList.add(artist);
+        getArtistList().add(artist);
 
         return artist;
+    }
+
+    public static void addAlbumToArtist(Album album){
+        Optional<Artist> artist = getArtistById(album.getArtistId());
+
+        artist.orElseThrow(() -> new NoSuchElementException("No artist found with id " + id));
+
+        addAlbum(artist.get(), album);
+    }
+
+    private static void addAlbum(Artist artist, Album album){
+        artist.getAlbums().add(album);
     }
 
 }
