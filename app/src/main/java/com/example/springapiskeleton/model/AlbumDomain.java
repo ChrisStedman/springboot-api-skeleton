@@ -1,23 +1,23 @@
 package com.example.springapiskeleton.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.common.collect.Lists;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.List;
 
-@Entity(name = "Artist")
-@Table(name = "artist")
+
+@Entity(name = "Album")
+@Table(name = "album")
 @Getter
 @Setter
-public class ArtistDomain {
+public class AlbumDomain {
+
     @Id
-    @SequenceGenerator(name = "artist_sequence", sequenceName = "artist_sequence", allocationSize = 1)
-    @GeneratedValue(generator = "artist_sequence")
+    @SequenceGenerator(name = "album_sequence", sequenceName = "album_sequence", allocationSize = 1)
+    @GeneratedValue(generator = "album_sequence")
     private Long id;
 
     @Column(nullable = false)
@@ -27,9 +27,15 @@ public class ArtistDomain {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
-    private List<AlbumDomain> albums = Lists.newArrayList();
+    @ManyToOne
+    @JoinColumn(name = "artist_id", insertable = false, updatable = false)
+    private ArtistDomain artist;
+
+    @Column(name = "artist_id")
+    private Long artistId;
+
+    @Column
+    private LocalDate releaseDate;
 
     @Column(nullable = false)
     @CreationTimestamp
