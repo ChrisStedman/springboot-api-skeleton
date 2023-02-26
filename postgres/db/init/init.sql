@@ -1,23 +1,49 @@
-CREATE SCHEMA example_schema;
+CREATE SCHEMA music;
 
-CREATE TABLE example_schema.example_table
+CREATE TABLE music.artist
 (
-    id NUMERIC PRIMARY KEY,
-    full_name character varying(255) NOT NULL UNIQUE,
-    age int NOT NULL,
-    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    id numeric PRIMARY KEY,
+    name character varying(255) NOT NULL UNIQUE,
+    genre varchar NOT NULL,
+    creation_date timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-CREATE SEQUENCE example_schema.example_sequence
+CREATE SEQUENCE music.artist_sequence
     AS INTEGER
     INCREMENT BY 1
     START WITH 1
-    OWNED BY example_schema.example_table.id
+    OWNED BY music.artist.id
 ;
 
+INSERT INTO music.artist (id, name, genre)VALUES
+    (nextVal('music.artist_sequence'), 'Nirvana', 'GRUNGE'),
+    (nextVal('music.artist_sequence'), '1000mods', 'ROCK'),
+    (nextVal('music.artist_sequence'), 'Days N Daze', 'PUNK');
 
 
-INSERT INTO example_schema.example_table (id, full_name, age)VALUES
-                                             (nextVal('example_schema.example_sequence'), 'Bob Smith', 22),
-                                             (nextVal('example_schema.example_sequence'), 'Dave Johnson', 36),
-                                             (nextVal('example_schema.example_sequence'), 'Mark Thompson', 28);
+
+CREATE TABLE music.album
+(
+    id numeric PRIMARY KEY,
+    name character varying(255) NOT NULL UNIQUE,
+    genre varchar NOT NULL,
+    artist_id numeric NOT NULL,
+    release_date date,
+    creation_date timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT fk_artist
+        FOREIGN KEY(artist_id)
+            REFERENCES music.artist(id)
+);
+
+CREATE SEQUENCE music.album_sequence
+    AS INTEGER
+    INCREMENT BY 1
+    START WITH 1
+    OWNED BY music.album.id
+;
+
+INSERT INTO music.album (id, name, genre, artist_id, release_date)VALUES
+    (nextVal('music.album_sequence'), 'Bleach', 'GRUNGE', 1, '1989-06-15'),
+    (nextVal('music.album_sequence'), 'Nevermind', 'GRUNGE', 1, '1991-09-24'),
+    (nextVal('music.album_sequence'), 'Super Van Vacation', 'ROCK', 2, '2011-09-29'),
+    (nextVal('music.album_sequence'), 'Show Me The Blueprints', 'PUNK', 3, '2020-05-01');

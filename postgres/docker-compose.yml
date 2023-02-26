@@ -1,10 +1,10 @@
 version: '3.8'
 services:
   postgres:
-    container_name: postgres_example
+    container_name: postgres_database
     restart: always
     environment:
-      - POSTGRES_DB=example_database
+      - POSTGRES_DB=music
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     build: './db'
