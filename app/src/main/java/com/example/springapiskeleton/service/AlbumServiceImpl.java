@@ -7,6 +7,9 @@ import com.example.springapiskeleton.model.AlbumDomain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +17,15 @@ public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
     private final AlbumMapper albumMapper;
+
+    @Override
+    public AlbumDomain getAlbumById(String albumId){
+        Optional<AlbumDomain> album = albumRepository.findById(Long.parseLong(albumId));
+
+        return album.orElseThrow(
+                () -> new NoSuchElementException("No album found with id " + albumId)
+        );
+    }
 
     @Override
     public AlbumDomain createAlbum(AlbumBase albumBase) {

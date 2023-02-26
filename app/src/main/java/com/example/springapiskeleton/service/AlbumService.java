@@ -5,5 +5,8 @@ import com.example.springapiskeleton.model.AlbumDomain;
 
 public interface AlbumService {
 
+    AlbumDomain getAlbumById(String albumId);
+
     AlbumDomain createAlbum(AlbumBase albumBase);
+
 }

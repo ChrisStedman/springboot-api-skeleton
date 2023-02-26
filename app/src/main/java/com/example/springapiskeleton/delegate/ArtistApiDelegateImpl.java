@@ -7,7 +7,7 @@ import com.example.springapiskeleton.api.model.ArtistBase;
 import com.example.springapiskeleton.mapper.ArtistMapper;
 import com.example.springapiskeleton.model.ArtistDomain;
 import com.example.springapiskeleton.service.ArtistService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ArtistApiDelegateImpl implements ArtistApiDelegate {
 
     private final ArtistService artistService;
