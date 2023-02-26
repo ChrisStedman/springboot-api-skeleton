@@ -21,8 +21,6 @@ public class AlbumServiceImpl implements AlbumService {
 
         Album album = AlbumDao.createAlbum(albumBase);
 
-        artistService.addAlbumToArtist(album);
-
         return album;
     }
 

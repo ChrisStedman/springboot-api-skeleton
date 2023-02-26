@@ -1,18 +1,16 @@
 package com.example.springapiskeleton.service;
 
-import com.example.springapiskeleton.api.model.Album;
-import com.example.springapiskeleton.api.model.Artist;
 import com.example.springapiskeleton.api.model.ArtistBase;
+import com.example.springapiskeleton.model.ArtistDomain;
 
 import java.util.List;
 
 public interface ArtistService {
 
-    List<Artist> getAllArtists();
+    List<ArtistDomain> getAllArtists();
 
     Boolean isExistingArtist(Long id);
 
-    Artist createArtist(ArtistBase artistBase);
+    ArtistDomain createArtist(ArtistBase artistBase);
 
-    void addAlbumToArtist(Album album);
 }
