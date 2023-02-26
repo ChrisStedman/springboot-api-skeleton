@@ -1,32 +1,25 @@
 package com.example.springapiskeleton.service;
 
-import com.example.springapiskeleton.api.model.Album;
 import com.example.springapiskeleton.api.model.AlbumBase;
-import com.example.springapiskeleton.dao.AlbumDao;
-import lombok.AllArgsConstructor;
+import com.example.springapiskeleton.dao.AlbumRepository;
+import com.example.springapiskeleton.mapper.AlbumMapper;
+import com.example.springapiskeleton.model.AlbumDomain;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AlbumServiceImpl implements AlbumService {
 
-    private final ArtistService artistService;
+    private final AlbumRepository albumRepository;
+    private final AlbumMapper albumMapper;
 
     @Override
-    public Album createAlbum(AlbumBase albumBase) {
+    public AlbumDomain createAlbum(AlbumBase albumBase) {
 
-        validateArtistExists(albumBase.getArtistId());
+        AlbumDomain albumDomain = albumMapper.mapToAlbumDomain(albumBase);
 
-        Album album = AlbumDao.createAlbum(albumBase);
-
-        return album;
-    }
-
-    private void validateArtistExists(Long id){
-        if(!artistService.isExistingArtist(id)){
-            throw new NoSuchElementException("No artist found with id " + id);
-        }
+        return albumRepository.saveAndFlush(albumDomain);
     }
 }
