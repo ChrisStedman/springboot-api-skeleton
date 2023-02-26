@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1f22e82d-131d-42c0-9063-4da59d2abf95",
+		"_postman_id": "60bf63e1-6e00-4433-bcaf-9664e30790f6",
 		"name": "Music API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19352319"
+		"_exporter_id": "12127821"
 	},
 	"item": [
 		{
@@ -59,7 +59,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"1000mods\",\n    \"genre\": \"Rock\",\n    \"albums\": [\n        {\n            \"name\": \"Super Van Vacation\",\n            \"genre\": \"Rock\",\n            \"releaseDate\": \"2011-09-29\"\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"The Beatles\",\n    \"genre\": \"Pop\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,8 +100,34 @@
 							"variable": [
 								{
 									"key": "albumId",
-									"value": null
+									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Help!\",\r\n    \"genre\": \"Pop\",\r\n    \"releaseDate\": \"1965-08-06\",\r\n    \"artistId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/album",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"album"
 							]
 						}
 					},
